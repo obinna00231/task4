@@ -5,7 +5,7 @@ This repository hosts the order performance center Dashboard, an interactive Pow
 
 ## Key Performance Indicators (KPIs)
 The top KPI ribbon tracks five high-level metrics crucial for assessing overall business health:
-* Total Customers:1,189 unique purchasing clients.
+* pending orders:20%.
 * Total Revenue: $1.26M in gross sales.
 * Total Quantity: 3,535 total items sold.
 * Total Orders: 1,200 transactions processed.
@@ -26,21 +26,13 @@ Total Orders = DISTINCTCOUNT('Cleaned data'[Order ID])
 Calculates the average monetary amount spent every time a customer places an order.
 
 Average Order Value = DIVIDE([Total Revenue], [Total Orders], 0)
+## 4. pending order%
+ to show what % of your total orders are still pending and not completed yet.
+ pending order%=  DIVIDE(CALCULATE(COUNTROWS(Sheet1),Sheet1[OrderStatus] = "pending"),COUNTROWS(Sheet1))
+## 5. pending alert
+this is the early warning system for orders that are stuck too long.
 
-## 4. Revenue per Customer
-An efficiency metric calculated by dividung total revenue by total number of uniue customers over a specific period
-
-Revenue per customer = Divide ([Total revenue],[Total customers])
-
-## 5. Total Quantity
-The gross volume of individual items sold across all transactions during a given period.
-
-Total Quantity = Sum('Cleaned data' [Quantity])
-
-## 6. Total Customers
-The unique number of individual buyers who have completed at least one transaction within a specific timeframe.
-
-Total Customers = DISTINCTCOUNT('Cleaned data'[CustomerID])
+pending alert =  IF([pending order %]>0.15,1,0)
 
 ## Key Insights
 1. Revenue peaked in June ($171K), indicating a strong mid-year sales performance.
@@ -62,6 +54,9 @@ Total Customers = DISTINCTCOUNT('Cleaned data'[CustomerID])
 
 ## How to Run/View the project
 Dashboard: Open the dashbord file in "order performance center Dashboard Project 4" to interact with the visualization.
+
+## project gallery1
+ ![alt text](https://github.com/obinna00231/task4/blob/fab03da0a494fd695aa9200e662350ab26b6bb11/decodelab%20project3/decodelab.pbix)
 
 ## Project Gallery
 
